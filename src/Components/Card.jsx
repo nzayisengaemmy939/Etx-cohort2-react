@@ -6,8 +6,8 @@ import Rating from "../assets/Rating.png";
 const Card = ({img,name,exp}) => {
   return (
     <div
-      className="bg-[#F9F8F8] h-[400px] w-[290px] mb-9"
-      style={{ borderRadius: "30px" }}
+      className="bg-[#F9F8F8] h-[400px] w-[100%] mb-9 border-2 border-[hsla(197,40%,25%,1)]"
+      style={{ borderRadius: "20px" }}
     >
       <button className="bg-[#274C5B] text-white outline-none border-none rounded-md py-1 px-2 ml-[30px] mt-[25px] mb-3">
         {name}
