@@ -20,7 +20,7 @@ const About = () => {
           }}
         ></div>
         <div className="w-[100%] h-[70%] content-center flex flex-col gap-[15px] md:w-[49%] md:h-[100%]">
-          <p className="font-cursive text-[#68A47F] text-[26px] font-medium">
+          <p className="font-cursive text-[#68A47F] text-[26px] font-medium mt-[50px]">
             About Us
           </p>
           <p
