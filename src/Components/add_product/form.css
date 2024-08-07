@@ -1,0 +1,75 @@
+/* about user submit component */
+.submit-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    z-index: 1000; /* Higher z-index to ensure it overlays other content */
+}
+.submit-case{
+z-index: 1;
+background-color: white;
+border: 1px solid hsla(0, 0%, 0%, 0.174);
+height: auto;
+border-radius: 5px;
+box-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.174);
+width: 45%;
+}
+.submit-case form{
+    display: flex;
+    flex-direction: column;
+}
+.close{
+    position: relative;
+    right: -400px;
+    top: 14px;
+    /* margin-right: 20px; */
+    /* margin-top: 20px; */
+ 
+    font-size: 18px;
+    color: hsla(0, 100%, 50%, 0.589);
+}
+.submit-case p{
+    margin-left: 15%;
+    font-size: 24px;
+}
+.submit-case label{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-left: 15%;
+    
+    margin-top: 10px;
+
+}
+
+.submit-case label input{
+    width: 80%;
+    height: 40px;
+    /* background-color:  #D1D5DB; */
+
+    border: 1.5px solid hsla(0, 0%, 0%, 0.217);
+    border-radius: 6px;
+}
+
+.submit-case  button{
+    width:68%;
+ 
+    height: 40px; 
+   
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    margin-left: 15%;
+    /* margin: auto; */
+    margin-top: 10px;
+    background-color: hsla(0, 100%, 50%, 0.788);
+    color: white;
+    margin-bottom: 20px;
+}

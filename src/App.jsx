@@ -1,20 +1,21 @@
-import React from 'react'
-import Navbar from './Components/Navbar'
-import Natural from './Components/Natural'
-import Welcome from './Components/welcome'
-import About from './Components/About'
-import Product from './Components/Product'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import All from './Components/All';
+import { ProductProvider } from './Components/ProductContext';
+import Detail from './Components/detail';
 
 const App = () => {
   return (
-    <div>
-      <Navbar></Navbar>
-      <Welcome></Welcome>
-      <Natural></Natural>
-      <About></About>
-      <Product></Product>
-    </div>
-  )
-}
+    <ProductProvider>
+   <Router>
+      <Routes>
+        <Route path="/" element={<All />} />
+        <Route path="/product/:id" element={<Detail />} />
+      </Routes>
+    </Router>
+    </ProductProvider>
+ 
+  );
+};
 
-export default App
+export default App;
