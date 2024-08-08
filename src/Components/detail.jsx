@@ -39,7 +39,7 @@ const Detail = () => {
       }}
     >
       <div className="w-[90%] bg-white p-4 rounded-lg shadow-lg flex flex-col md:w-[80%] md:flex">
-        <div className="w-[90%] h-[60vh] md:w-[100%] md:h-screen">
+        <div className="w-[100%] h-[60vh] md:w-[100%] md:h-screen">
         <img src={img} alt={name} className="mb-4  h-full w-full" />
 
         </div>
