@@ -30,7 +30,7 @@ const Detail = () => {
 
   return (
     <div
-      className="h-screen w-full flex justify-center items-center"
+      className="h-full w-full flex justify-center items-center"
       style={{
         backgroundImage: `url(${agriculture})`,
         backgroundSize: "cover",
