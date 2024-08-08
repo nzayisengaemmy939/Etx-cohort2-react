@@ -38,19 +38,19 @@ const Detail = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="w-[80%] bg-white p-4 rounded-lg shadow-lg flex">
-        <div className="w-[50%] h-screen">
+      <div className="w-[90%] bg-white p-4 rounded-lg shadow-lg flex flex-col md:w-[80%] md:flex">
+        <div className="w-[100%] h-screen md:w-[50%]">
         <img src={img} alt={name} className="mb-4  h-full w-full" />
 
         </div>
-        <div className="w-[50%] flex flex-col justify-center items-center">
+        <div className="w-[100%] flex flex-col mt-4 justify-center items-center md-[50%]">
         <h2 className="text-xl font-bold mb-4 text-[#274C5B]"><span className="text-md text-black">Name:</span>{name}</h2>
         <p className="mb-2 text-[#274C5B]"><span className="text-md text-black">description:</span>{exp}</p>
         <p className="text-gray-900 font-semibold"><span className="text-md text-black">Price:</span>{price}</p>
         <div className=" flex gap-10 mt-3">
           <button
             className="py-1 px-4 rounded-md text-white"
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "#7EB693" }}
             onClick={handleUpdate}
           >
             Update

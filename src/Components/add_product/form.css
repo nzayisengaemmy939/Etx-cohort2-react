@@ -73,3 +73,24 @@ width: 45%;
     color: white;
     margin-bottom: 20px;
 }
+@media (max-width: 600px) {
+    .submit-case{
+        width: 90%;
+    }
+    .submit-case label{
+width: 90%;
+    }
+    .submit-case button{
+        width: 73%;
+            }
+            .close{
+                position: relative;
+                right: -250px;
+                top: 14px;
+                /* margin-right: 20px; */
+                /* margin-top: 20px; */
+             
+                font-size: 18px;
+                color: hsla(0, 100%, 50%, 0.589);
+            }
+}

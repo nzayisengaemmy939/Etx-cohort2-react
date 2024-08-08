@@ -12,6 +12,7 @@ const SubmitProduct = ({ onClose }) => {
   const [des, setDes] = useState("");
   const [image, setImage] = useState(null);
   const [price, setPrice] = useState("");
+  const [loading,setLoading]=useState(false)
 
   const addProduct = async (e) => {
     e.preventDefault();
@@ -22,11 +23,14 @@ const SubmitProduct = ({ onClose }) => {
     }
 
     try {
+      setLoading(true)
+
       const storageRef = ref(storage, `images/${image.name}`);
       await uploadBytes(storageRef, image);
       const imageURL = await getDownloadURL(storageRef);
 
       const productsCollection = collection(db, "products");
+
       const docRef = await addDoc(productsCollection, {
         type,
         des,
@@ -40,6 +44,7 @@ const SubmitProduct = ({ onClose }) => {
       setDes("");
       setImage(null);
       setPrice("");
+      setLoading(false)
       window.location.reload();
       if (onClose) onClose();
     } catch (error) {
@@ -93,7 +98,7 @@ const SubmitProduct = ({ onClose }) => {
               required
             />
           </label>
-          <button type="submit">Submit</button>
+          <button type="submit">{loading?"Submitting...":"Submit"}</button>
         </form>
       </div>
     </div>

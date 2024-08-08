@@ -1,11 +1,18 @@
 // src/Components/Product.js
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs, query, limit, startAfter } from 'firebase/firestore';
-import { db } from '../../fireBase/config';
-import Card from './Card';
+import React, { useEffect, useState } from "react";
+import {
+  collection,
+  getDocs,
+  query,
+  limit,
+  startAfter,
+} from "firebase/firestore";
+import { db } from "../../fireBase/config";
+import Card from "./Card";
 import Vegetable from "../assets/vegetable.png";
 import freshRight from "../assets/freshRight.svg";
-import { useProductContext } from './ProductContext'; // Import context hook
+import { useProductContext } from "./ProductContext";
+import SubmitProduct from "./add_product/Form"; // Import context hook
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +20,7 @@ const Product = () => {
   const [lastVisible, setLastVisible] = useState(null);
   const [hasMore, setHasMore] = useState(true); // To track if there are more products to load
   const { setProductCount } = useProductContext(); // Access context function
+  const [product,setProduct]=useState("")
 
   const PAGE_SIZE = 4; // Number of products per page
 
@@ -20,10 +28,7 @@ const Product = () => {
   const getData = async (startAfterDoc = null) => {
     setLoading(true);
     try {
-      let q = query(
-        collection(db, "products"),
-        limit(PAGE_SIZE)
-      );
+      let q = query(collection(db, "products"), limit(PAGE_SIZE));
 
       if (startAfterDoc) {
         q = query(
@@ -34,13 +39,13 @@ const Product = () => {
       }
 
       const querySnapshot = await getDocs(q);
-      const productsList = querySnapshot.docs.map(doc => ({
+      const productsList = querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
 
       if (startAfterDoc) {
-        setProducts(prevProducts => [...prevProducts, ...productsList]);
+        setProducts((prevProducts) => [...prevProducts, ...productsList]);
       } else {
         setProducts(productsList);
       }
@@ -66,15 +71,26 @@ const Product = () => {
       getData(lastVisible);
     }
   };
-
+  const toggleProduct = () => {
+    // Stop event propagation to ensure click is handled only in this element
+    
+    setProduct(!product);
+  };
   return (
     <div className="h-full w-full px-4 py-8 md:[100vh]">
-      <p className="text-center text-[36px] font-cursive font-medium text-[#7EB693]">Categories</p>
-      <p className="text-center font-bold text-[50px] font-sans text-[#274C5B]">Our Product</p>
+      <p className="text-center text-[36px] font-cursive font-medium text-[#7EB693]">
+        Categories
+      </p>
+      <p className="text-center font-bold text-[50px] font-sans text-[#274C5B]">
+        Our Product
+      </p>
+      <div className="bg-[#7EB693] w-[30px] h-[30px] text-white p-3 rounded-3xl ml-auto content flex justify-center items-center mb-4" onClick={toggleProduct}>
+        <span className="text-xl">+</span>{" "}
+      </div>
       {loading && <p className="text-center">Loading...</p>}
       {!loading && (
-        <div className="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-screen-xl">
-          {products.map(product => (
+        <div className="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-screen-xl ease-in">
+          {products.map((product) => (
             <Card
               key={product.id}
               id={product.id}
@@ -82,6 +98,7 @@ const Product = () => {
               name={product.type}
               exp={product.des}
               price={product.price}
+              className="slide-in" // Add the animation class
             />
           ))}
         </div>
@@ -101,6 +118,7 @@ const Product = () => {
           </span>
         </button>
       )}
+       {product&& <SubmitProduct onClose={toggleProduct}></SubmitProduct>}
     </div>
   );
 };

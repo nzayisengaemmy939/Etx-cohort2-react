@@ -16,11 +16,7 @@ const Navbar = () => {
     setNav(!nav);
   };
 
-  const toggleProduct = (event) => {
-    // Stop event propagation to ensure click is handled only in this element
-    
-    setProduct(!product);
-  };
+  
 
   return (
     <div className="w-full h-[180px] text-red content-center">
@@ -55,7 +51,6 @@ const Navbar = () => {
           />
           <div
             className="flex gap-5 items-center border p-2 rounded-full cursor-pointer"
-            onClick={toggleProduct}
           >
             <img src={cart} alt="Cart Icon" className="w-[46px] h-[46px]" />
             <p>Cart ({productCount})</p>
@@ -109,7 +104,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {product&& <SubmitProduct onClose={toggleProduct}></SubmitProduct>}
+     
 
     </div>
   );
