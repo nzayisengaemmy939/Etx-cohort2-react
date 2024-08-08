@@ -84,7 +84,7 @@ const Product = () => {
       <p className="text-center font-bold text-[50px] font-sans text-[#274C5B]">
         Our Product
       </p>
-      <div className="bg-[#7EB693] w-[30px] h-[30px] text-white p-3 rounded-3xl ml-auto content flex justify-center items-center mb-4" onClick={toggleProduct}>
+      <div className="bg-[#7EB693] w-[30px] h-[30px] text-white p-3 rounded-3xl ml-auto content flex justify-center items-center mb-4 mr-20" onClick={toggleProduct}>
         <span className="text-xl">+</span>{" "}
       </div>
       {loading && <p className="text-center">Loading...</p>}
